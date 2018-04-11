@@ -4,43 +4,44 @@ package Practico1;
 public class LinkedList {
 	private Node first;
 	private int size = 0;
-	
+
 	public LinkedList() {
 		first = null;
 	}
-	
+
+	//inserta al principio
 	public void add(Object n){
 		Node temp = new Node(n,null);
 		temp.setNext(first);
 		first = temp;
 		size++;
 	}
-	
 
+	//inserta al final
 	public void insertLast(Object o) {
-		
+
 		if(isEmpty()){
 			add(o);
 		}
 		else {
 		Node n = first;
 		while(n.getNext() != null){
-			n = n.getNext();	
+			n = n.getNext();
 		}
 		Node nuevo = new Node(o, null);
 		n.setNext(nuevo);
 		size++;
 		}
 	}
-	
+
 	public int size() {
 		return size;
 	}
-	
+
 	public boolean isEmpty() {
 		return size == 0;
 	}
-	
+
 	private boolean contains(Object obj) {
 		// TODO Auto-generated method stub
 		if(!isEmpty()) {
@@ -54,15 +55,15 @@ public class LinkedList {
 				count++;
 			}
 		}
-		
 		return false;
 	}
-	
+
+	//Busca el elemnt pasado por parametro y lo devuelvo
 	public Object getElement(int p) {
 		int cont = 0;
 		if(p >= 0 && p <= size) {
 			Node elem = first;
-			
+
 			while ( p != cont ) {
 				elem = elem.getNext();
 				cont++;
@@ -71,10 +72,10 @@ public class LinkedList {
 		}
 		return null;
 	}
-	
-	
+
+// requisito de EJERCICIO 5 - comparar dos listas y retorna una lista con los elementos en comun ordenada
 	public static LinkedList compareAndCreateNewList(LinkedList first, LinkedList second ) {
-		
+
 		LinkedList resultList = new LinkedList();
 		LinkedList resultListOrd = new LinkedList();
 
@@ -86,21 +87,20 @@ public class LinkedList {
 		}
 		resultListOrd = sort(resultList);
 		return resultListOrd;
-		
 	}
-	
 
+//para poder ordenar, obtengo el minimo de la lista
 	public Object getMin(){
-		
+
 		if(size() == 1){
 			return first.getValue();
 		}
 		Node aux = first;
 		Object min = first.getValue();
 		Object current = null;
-		
+
 		int pos = 0;
-		
+
 		while(pos < size){
 			current = aux.getValue();
 			if((int)min > (int)current){
@@ -111,13 +111,14 @@ public class LinkedList {
 		}
 		return min;
 	}
-	
+
+//elemina el elemento pasado por parametro para poder ir realizando el ordenamiento
 	public boolean removeElement(Object o){
 
 		if(!isEmpty()){
 			if (first.getValue().equals(o)) {
 				Node temp = first;
-				first = first.getNext();	
+				first = first.getNext();
 				temp.setNext(null);
 				size--;
 				return true;
@@ -133,11 +134,11 @@ public class LinkedList {
 						return true;
 					}
 					aux = aux.getNext();
-				}			
+				}
 				if(aux.getValue().equals(o)){
 					if(size() <= 1){
 						Node temp = first;
-						first = first.getNext();	
+						first = first.getNext();
 						temp.setNext(null);
 						size--;
 					}
@@ -153,24 +154,23 @@ public class LinkedList {
 					}
 					return true;
 				}
-			}	
+			}
 		}
 		return false;
 	}
 
-	
-	
+//retorna una lista ordenada de menor a mayor
 	public static LinkedList sort(LinkedList list) {
-
 		LinkedList newList = new LinkedList();
 		while(!list.isEmpty()){
-			Object max = list.getMin();
-			list.removeElement(max);
-			newList.insertLast(max);
+			Object min = list.getMin();
+			list.removeElement(min);
+			newList.insertLast(min);
 		}
-		return  newList;
+		return newList;
 	}
-	
+
+//imprimir lista
 	public String toString(){
 
 		String result = "";
@@ -182,17 +182,17 @@ public class LinkedList {
 
 		return result;
 	}
-	
+
 	public static void main(String[] args) {
-		
-//		LISTAS DESORDENADAS 
+
+//		LISTAS DESORDENADAS
 		LinkedList listOne = new LinkedList();
 		listOne.insertLast(2);
 		listOne.insertLast(1);
 		listOne.insertLast(6);
 		listOne.insertLast(4);
 		listOne.insertLast(8);
-				
+
 		LinkedList listTwo = new LinkedList();
 		listTwo.insertLast(3);
 		listTwo.insertLast(4);
@@ -204,7 +204,7 @@ public class LinkedList {
 		System.out.println("* " + listOne.toString());
 
 		System.out.println("* " + listTwo.toString());
-		
+
 		LinkedList listThree = new LinkedList();
 		listThree = compareAndCreateNewList(listOne, listTwo);
 		System.out.println("Lista Resultado: " + listThree.toString() + "\n");
@@ -216,7 +216,7 @@ public class LinkedList {
 		list1.insertLast(3);
 		list1.insertLast(4);
 		list1.insertLast(5);
-				
+
 		LinkedList list2 = new LinkedList();
 		list2.insertLast(1);
 		list2.insertLast(4);
@@ -227,12 +227,12 @@ public class LinkedList {
 		System.out.println("Listas Ordenadas:");
 		System.out.println("* " + list1.toString());
 		System.out.println("* " + list2.toString());
-		
+
 		LinkedList list3 = new LinkedList();
 		list3 = compareAndCreateNewList(list1, list2);
 		System.out.println("Lista Resultado: " +list3.toString());
 
-		
-		}	
+
+		}
 
 }
