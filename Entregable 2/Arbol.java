@@ -115,5 +115,14 @@ public class Arbol {
 		arbol.imprimirEnOrden();
 		
 		System.out.println(arbol.hasElement(5));
+		
+//		Metodos:
+//			- insert(NodoArbol n, NodoArbol root) y hasElem(Integer elem, NodoArbol root2)
+//			La complejidad temporal de este metodo es O log2(n), ya que es similar a una busqueda binaria,
+//			y lo que hace es ir descartando la mitad de los nodos a medida que va recorriendo para insertar o buscar 
+//			si existe el elemento pasado por parametro. 
+//			Si esta completo y/o balanceado, en cada iteracion dividimoms por dos, es por eso que la complejidad es log2(n) 
+
+
 	}
 }
