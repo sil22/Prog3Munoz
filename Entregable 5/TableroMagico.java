@@ -7,7 +7,7 @@ public class TableroMagico {
 	boolean usados[];
 	int tablero[][] = new int[n][n];
 
-	public TableroMagico2(int n, int k, int suma) {
+	public TableroMagico(int n, int k, int suma) {
 		this.n = n;
 		this.k = k;
 		this.suma = suma;
