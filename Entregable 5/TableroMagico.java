@@ -1,5 +1,3 @@
-package Practico5;
-
 public class TableroMagico {
 	int n;
 	int k;
